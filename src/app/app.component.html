@@ -1,0 +1,67 @@
+<div class="p-5">
+  <!-- Form to add user -->
+  <h1>IIDE TASK</h1>
+  <div style="margin-bottom: 50px;">
+    <form #Info="ngForm" (ngSubmit)="submit(Info.value)">
+      <label for="exampleFormControlInput1" class="form-label"
+        >First Name:</label
+      >
+      <input
+        type="email"
+        class="form-control"
+        id="exampleFormControlInput1"
+        placeholder="Enter your First Name"
+        name="firstname"
+        ngModel
+      />
+      <label for="exampleFormControlInput1" class="form-label"
+        >Last Name:</label
+      >
+      <input
+        type="email"
+        class="form-control"
+        id="exampleFormControlInput1"
+        placeholder="Enter your Last name"
+        name="lastname"
+        ngModel
+      />
+      <label for="exampleFormControlInput1" class="form-label"
+        >Email address</label
+      >
+      <input
+        type="email"
+        class="form-control"
+        id="exampleFormControlInput1"
+        placeholder="name@example.com"
+        name="email"
+        ngModel
+      />
+      <button type="submit" class="btn btn-primary mt-3">Submit</button>
+    </form>
+  </div>
+
+  <!-- Table to show user data -->
+  <div>
+    <h1 class="mb-3">Users Table</h1>
+    <table class="table">
+      <tr>
+        <th>Firstname</th>
+        <th>Lastname</th>
+        <th>Email</th>
+        <th>Option To delete</th>
+      </tr>
+      <tr *ngFor="let user of users; let i = index" [attr.data-index]="i">
+        <td>{{ user.firstname }}</td>
+        <td>{{ user.lastname }}</td>
+        <td>{{ user.email }}</td>
+        <td><input type="button" value="delete" (click)="deleteUser(i)" /></td>
+      </tr>
+    </table>
+    <input
+      type="button"
+      class="btn btn-primary mt-3"
+      value="FetchUsers"
+      (click)="getUsers()"
+    />
+  </div>
+</div>
