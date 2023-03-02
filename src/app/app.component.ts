@@ -17,7 +17,7 @@ export class AppComponent implements OnInit {
       lastname: new FormControl(null),
       email: new FormControl(null),
     });
-   
+    this.getUsers()
   }
   submit(data:{firstname:string;lastname:string;email:string}){
     const value=this.userForm.value;
@@ -27,7 +27,9 @@ export class AppComponent implements OnInit {
   }
   getUsers(){
     let usersString:any = localStorage.getItem(localStorageKeys.USERS_KEY)
-    this.users=JSON.parse(usersString);
+    if(usersString){
+      this.users=JSON.parse(usersString);
+    }
   }
   deleteUser(index:any){
     this.users.splice(index,1)
