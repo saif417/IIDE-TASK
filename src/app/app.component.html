@@ -2,7 +2,7 @@
   <!-- Form to add user -->
   <h1>IIDE TASK</h1>
   <div style="margin-bottom: 50px;">
-    <form [formGroup]="userForm" (ngSubmit)="submit(userForm.value)">
+    <form [formGroup]="userForm" (ngSubmit)="submit()">
       <label for="exampleFormControlInput1" class="form-label"
         >First Name:</label
       >
@@ -13,7 +13,6 @@
         id="exampleFormControlInput1"
         placeholder="Enter your First Name"
         formControlName="firstname"
-      
       />
       <label for="exampleFormControlInput1" class="form-label"
         >Last Name:</label
@@ -25,7 +24,6 @@
         id="exampleFormControlInput1"
         placeholder="Enter your Last name"
         formControlName="lastname"
-        ngModel
       />
       <label for="exampleFormControlInput1" class="form-label"
         >Email address</label
@@ -37,7 +35,6 @@
         id="exampleFormControlInput1"
         placeholder="name@example.com"
         formControlName="email"
-        ngModel
       />
       <button type="submit" class="btn btn-primary mt-3">Submit</button>
     </form>

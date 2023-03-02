@@ -19,7 +19,7 @@ export class AppComponent implements OnInit {
     });
     this.getUsers()
   }
-  submit(data:{firstname:string;lastname:string;email:string}){
+  submit(){
     const value=this.userForm.value;
     this.users.push(value)
     localStorage.setItem(localStorageKeys.USERS_KEY,JSON.stringify(this.users)); 
