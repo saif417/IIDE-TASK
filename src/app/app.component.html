@@ -2,7 +2,7 @@
   <!-- Form to add user -->
   <h1>IIDE TASK</h1>
   <div style="margin-bottom: 50px;">
-    <form #Info="ngForm" (ngSubmit)="submit(Info.value)">
+    <form [formGroup]="userForm" (ngSubmit)="submit(userForm.value)">
       <label for="exampleFormControlInput1" class="form-label"
         >First Name:</label
       >
@@ -11,8 +11,8 @@
         class="form-control"
         id="exampleFormControlInput1"
         placeholder="Enter your First Name"
-        name="firstname"
-        ngModel
+        formControlName="firstname"
+      
       />
       <label for="exampleFormControlInput1" class="form-label"
         >Last Name:</label
@@ -22,7 +22,7 @@
         class="form-control"
         id="exampleFormControlInput1"
         placeholder="Enter your Last name"
-        name="lastname"
+        formControlName="lastname"
         ngModel
       />
       <label for="exampleFormControlInput1" class="form-label"
@@ -33,7 +33,7 @@
         class="form-control"
         id="exampleFormControlInput1"
         placeholder="name@example.com"
-        name="email"
+        formControlName="email"
         ngModel
       />
       <button type="submit" class="btn btn-primary mt-3">Submit</button>
@@ -54,7 +54,7 @@
         <td>{{ user.firstname }}</td>
         <td>{{ user.lastname }}</td>
         <td>{{ user.email }}</td>
-        <td><input type="button" value="delete" (click)="deleteUser(i)" /></td>
+        <td><input type="button" value="Delete" class="btn btn-outline-danger" (click)="deleteUser(i)" /></td>
       </tr>
     </table>
   </div>

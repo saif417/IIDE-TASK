@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild} from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { FormControl, FormGroup} from '@angular/forms';
 import { localStorageKeys } from 'src/constants/strings';
 
 @Component({
@@ -8,14 +8,22 @@ import { localStorageKeys } from 'src/constants/strings';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
+  userForm:FormGroup
   users:any=[];
   addUsers:any;
   ngOnInit(){
-    this.getUsers()
+    this.userForm= new FormGroup({
+      firstname: new FormControl(null),
+      lastname: new FormControl(null),
+      email: new FormControl(null),
+    });
+   
   }
-  submit(data:{firstname:string,lastname:string,email:string}){
-    this.users.push(data)
-    localStorage.setItem(localStorageKeys.USERS_KEY,JSON.stringify(this.users));  
+  submit(data:{firstname:string;lastname:string;email:string}){
+    const value=this.userForm.value;
+    this.users.push(value)
+    localStorage.setItem(localStorageKeys.USERS_KEY,JSON.stringify(this.users)); 
+    this.clear();
   }
   getUsers(){
     let usersString:any = localStorage.getItem(localStorageKeys.USERS_KEY)
@@ -24,5 +32,8 @@ export class AppComponent implements OnInit {
   deleteUser(index:any){
     this.users.splice(index,1)
     localStorage.setItem(localStorageKeys.USERS_KEY, JSON.stringify(this.users));
+  }
+  clear(){
+    this.userForm.reset()
   }
 }
